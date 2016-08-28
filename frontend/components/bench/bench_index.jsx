@@ -13,7 +13,6 @@ class BenchIndex extends React.Component {
   render() {
     const benchIndexList = [];
     for (let benchId in this.props.benches) {
-      // benchIndexList.push(<li key={benchId}>{this.props.benches[benchId]}</li>);
       benchIndexList.push(<BenchIndexItem key={benchId} bench={this.props.benches[benchId]} />);
     }
 
