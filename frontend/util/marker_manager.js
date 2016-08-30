@@ -30,14 +30,47 @@ class MarkerManager {
         map: this.map,
         title: bench.description
       });
-      console.log([newMarker.position.lat(), newMarker.position.lng()]);
       this.markers.push(newMarker);
     };
 
     const benchesArr = _benchesToAdd();
+    const removeMarkersArr = this._markersToRemove(benches);
+
     benchesArr.forEach( bench => {
       _createMarkerFromBench(bench);
     });
+    removeMarkersArr.forEach( marker => {
+      this._removeMarker(marker);
+    });
+  }
+
+  _markersToRemove(benches) {
+    const resultsArr = [];
+    const latLngArr = [];
+
+    Object.keys(benches).forEach (key => {
+      latLngArr.push([benches[key].lat, benches[key].lng]);
+    });
+
+
+    this.markers.forEach( marker => {
+      let placeInResults = true;
+      latLngArr.forEach( latLng => {
+        if (latLng[0] === marker.position.lat && latLng[1] === marker.position.lng) {
+          placeInResults = false;
+        }
+      });
+
+      if (placeInResults) {
+        resultsArr.push(marker);
+      }
+    });
+
+    return resultsArr;
+  }
+
+  _removeMarker(marker) {
+    marker.setMap(null);
   }
 
 }

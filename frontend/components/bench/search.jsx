@@ -6,10 +6,10 @@ import BenchIndex from './bench_index';
 // the whole point of the "connect" function was so that we don't have
 // to pass the props explicitly.
 
-const Search = ({benches, requestBenches}) => {
+const Search = ({benches, requestBenches, updateBounds}) => {
   return(
     <div>
-      <BenchMap benches={benches} />
+      <BenchMap benches={benches} updateBounds={updateBounds} />
       <BenchIndex benches={benches} requestBenches={requestBenches} />
     </div>
   );
