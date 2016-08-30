@@ -8,16 +8,16 @@ import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
   const store = window.Store = configureStore();
-  window.requestBenches = ACTIONS.requestBenches;
-  window.updateBounds = FILTER_ACTIONS.updateBounds;
-  window.success = (data) => console.log(data);
-  window.filter = {
-    bounds: {
-      northEast: {lat: 37.85, lng: -122.35},
-      southWest: {lat: 37.75, lng: -122.50}
-    }
-  };
-  window.fetchBenches = API.fetchBenches;
+  // window.requestBenches = ACTIONS.requestBenches;
+  // window.updateBounds = FILTER_ACTIONS.updateBounds;
+  // window.success = (data) => console.log(data);
+  // window.filter = {
+  //   bounds: {
+  //     northEast: {lat: 37.85, lng: -122.35},
+  //     southWest: {lat: 37.75, lng: -122.50}
+  //   }
+  // };
+  // window.fetchBenches = API.fetchBenches;
 
   const root = document.getElementById("root");
 
