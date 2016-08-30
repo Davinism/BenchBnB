@@ -10,16 +10,20 @@ class Api::BenchesController < ApplicationController
     @bench = Bench.new(bench_params)
 
     if @bench.save
-      render json: @bench
+      render :show
     else
       puts @bench.errors.full_messages
       render json: "Failed to save."
     end
   end
 
+  def show
+    @bench = Bench.find(params[:id])
+  end
+
   private
   def bench_params
-    params.require(:bench).permit(:description, :lat, :lng)
+    params.require(:bench).permit(:description, :lat, :lng, :seating)
   end
 
 end
